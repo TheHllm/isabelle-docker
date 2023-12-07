@@ -1,0 +1,6 @@
+version: "3.9"
+
+services:
+  isabelle:
+    build: .
+    image: ghcr.io/thehllm/isabelle:latest
