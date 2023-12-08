@@ -22,6 +22,8 @@ RUN curl https://isabelle.in.tum.de/dist/Isabelle2023_linux.tar.gz -o Isabelle20
   rm Isabelle2023_linux.tar.gz && \
   curl -L https://github.com/isabelle-prover/isabelle-linter/archive/refs/tags/Isabelle2023-v1.0.0.tar.gz -o  isabelle-linter.tar.gz && \
   tar xzf isabelle-linter.tar.gz && rm -rf isabelle-linter.tar.gz && \
-  Isabelle/bin/isabelle components -u isabelle-linter-Isabelle2023-v1.0.0
+  Isabelle/bin/isabelle components -u isabelle-linter-Isabelle2023-v1.0.0 && \
+  Isabelle/bin/isabelle || true
 
-ENTRYPOINT ["Isabelle/bin/isabelle"]
+USER root
+ENTRYPOINT ["/home/isabelle/Isabelle/bin/isabelle"]
