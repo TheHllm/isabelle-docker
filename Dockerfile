@@ -26,4 +26,4 @@ RUN curl https://isabelle.in.tum.de/dist/Isabelle2023_linux.tar.gz -o Isabelle20
   Isabelle/bin/isabelle || true
 
 USER root
-ENTRYPOINT ["/home/isabelle/Isabelle/bin/isabelle"]
+ENTRYPOINT ["/bin/bash", "-c", "/home/isabelle/Isabelle/bin/isabelle $@ | tee isabelle_log"]
