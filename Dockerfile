@@ -14,15 +14,15 @@ USER isabelle
 
 # Isabelle
 WORKDIR /home/isabelle
-RUN curl https://isabelle.in.tum.de/dist/Isabelle2023_linux.tar.gz -o Isabelle2023_linux.tar.gz && tar xzf Isabelle2023_linux.tar.gz && \
-  mv Isabelle2023 Isabelle && \
+RUN curl https://isabelle.in.tum.de/dist/Isabelle2025_linux.tar.gz -o Isabelle2025_linux.tar.gz && tar xzf Isabelle2025_linux.tar.gz && \
+  mv Isabelle2025 Isabelle && \
   perl -pi -e 's,ISABELLE_HOME_USER=.*,ISABELLE_HOME_USER="\$USER_HOME/.isabelle",g;' Isabelle/etc/settings && \
   perl -pi -e 's,ISABELLE_LOGIC=.*,ISABELLE_LOGIC=HOL,g;' Isabelle/etc/settings && \
   Isabelle/bin/isabelle build -o system_heaps -b HOL && \
   rm Isabelle2023_linux.tar.gz && \
-  curl -L https://github.com/isabelle-prover/isabelle-linter/archive/refs/tags/Isabelle2023-v1.0.0.tar.gz -o  isabelle-linter.tar.gz && \
+  curl -L https://github.com/isabelle-prover/isabelle-linter/archive/refs/tags/Isabelle2025-v1.0.1.tar.gz -o  isabelle-linter.tar.gz && \
   tar xzf isabelle-linter.tar.gz && rm -rf isabelle-linter.tar.gz && \
-  Isabelle/bin/isabelle components -u isabelle-linter-Isabelle2023-v1.0.0 && \
+  Isabelle/bin/isabelle components -u isabelle-linter-Isabelle2025-v1.0.1 && \
   Isabelle/bin/isabelle || true
 
 USER root
